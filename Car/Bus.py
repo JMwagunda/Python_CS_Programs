@@ -137,16 +137,23 @@ def draw_driver_window(bus):
 
 # Draw bus function
 def draw_bus():
-    bus = turtle.Turtle(visible=False)
-
     draw_bus_body(bus)
     draw_wheel(bus)
     draw_door(bus)
     draw_windows(bus)
     draw_driver_window(bus)
+     
+# Set up the Turtle Screen
+wn = turtle.Screen()
+wn.setup(width=900, height=600)
+wn.title("Bus")
+bus = turtle.Turtle()
 
-    turtle.exitonclick()
+# Draw the Car
+draw_bus()
+# Hide the Turtle
+bus.hideturtle()
+# Keep the window open
+turtle.done()
 
-# Main driver code
-if __name__ == "__main__":
-    draw_bus()
+
