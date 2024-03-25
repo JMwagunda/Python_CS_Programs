@@ -1,65 +1,152 @@
 import turtle
 
-# Create a turtle object
-truck = turtle.Turtle()
+# Draw bus body function
+def draw_bus_body(bus):
+    bus.fillcolor("yellow")
+    bus.begin_fill()
+    bus.forward(200)
+    bus.left(90)
+    bus.forward(100)
+    bus.left(90)
+    bus.forward(200)
+    bus.left(90)
+    bus.forward(100)
+    bus.left(90)
 
-# Set the speed of the turtle
-truck.speed(1)
+    bus.penup()
+    bus.goto(200, 0)
+    bus.pendown()
+    bus.forward(50)
+    bus.left(90)
+    bus.forward(50)
+    bus.left(90)
+    bus.forward(50)
+    bus.left(90)
+    bus.end_fill()
 
-# Draw the body of the truck
-truck.color("blue")
-truck.begin_fill()
-truck.forward(200)
-truck.left(90)
-truck.forward(50)
-truck.left(90)
-truck.forward(50)
-truck.right(90)
-truck.forward(100)
-truck.left(90)
-truck.forward(50)
-truck.left(90)
-truck.forward(100)
-truck.right(90)
-truck.forward(50)
-truck.left(90)
-truck.forward(50)
-truck.left(90)
-truck.forward(200)
-truck.end_fill()
+# Draw wheel function
+def draw_wheel(bus):
+    # Back wheel code
+    bus.penup()
+    bus.goto(10, 0)
+    bus.pendown()
+    bus.fillcolor("black")
+    bus.begin_fill()
+    bus.circle(20)
+    bus.end_fill()
 
-# Draw the wheels of the truck
-truck.penup()
-truck.goto(50, -50)
-truck.pendown()
-truck.color("black")
-truck.begin_fill()
-truck.circle(25)
-truck.end_fill()
+    # Back wheel hub code
+    bus.penup()
+    bus.goto(20, 0)
+    bus.pendown()
+    bus.fillcolor("grey")
+    bus.begin_fill()
+    bus.circle(10)
+    bus.end_fill()
 
-truck.penup()
-truck.goto(150, -50)
-truck.pendown()
-truck.color("black")
-truck.begin_fill()
-truck.circle(25)
-truck.end_fill()
+    # Front wheel code
+    bus.penup()
+    bus.goto(185, 0)
+    bus.pendown()
+    bus.fillcolor("black")
+    bus.begin_fill()
+    bus.circle(20)
+    bus.end_fill()
 
-# Draw the windows of the truck
-truck.penup()
-truck.goto(50, 0)
-truck.pendown()
-truck.color("black")
-truck.begin_fill()
-truck.forward(50)
-truck.left(90)
-truck.forward(30)
-truck.left(90)
-truck.forward(50)
-truck.end_fill()
+    # Front wheel hub code
+    bus.penup()
+    bus.goto(195, 0)
+    bus.pendown()
+    bus.fillcolor("grey")
+    bus.begin_fill()
+    bus.circle(10)
+    bus.end_fill()
 
-# Hide the turtle
-truck.hideturtle()
+# Draw door function
+def draw_door(bus):
+    bus.penup()
+    bus.goto(180, 5)
+    bus.pendown()
+    bus.fillcolor("cyan")
+    bus.begin_fill()
+    bus.backward(85)
+    bus.left(90)
+    bus.backward(25)
+    bus.left(90)
+    bus.backward(85)
+    bus.left(90)
+    bus.backward(25)
+    bus.left(90)
+    bus.end_fill()
 
-# Exit on click
-turtle.exitonclick()
+    # Draw door handle
+    bus.penup()
+    bus.goto(170, 45)
+    bus.pendown()
+    bus.fillcolor("grey")
+    bus.begin_fill()
+    bus.circle(4)
+    bus.end_fill()
+
+# Draw windows function
+def draw_windows(bus):
+    bus.penup()
+    bus.goto(10, 90)
+    bus.pendown()
+    bus.fillcolor("cyan")
+    bus.begin_fill()
+    bus.forward(35)
+    bus.left(90)
+    bus.forward(120)
+    bus.left(90)
+    bus.forward(35)
+    bus.left(90)
+    bus.forward(120)
+    bus.left(90)
+
+    bus.forward(35)
+    bus.left(90)
+    bus.forward(30)
+    bus.left(90)
+    bus.forward(35)
+    bus.right(90)
+    bus.forward(30)
+    bus.right(90)
+    bus.forward(35)
+    bus.left(90)
+    bus.forward(30)
+    bus.left(90)
+    bus.forward(35)
+    bus.end_fill()
+
+# Driver window function
+def draw_driver_window(bus):
+    bus.penup()
+    bus.goto(200, 90)
+    bus.pendown()
+    bus.fillcolor("cyan")
+    bus.begin_fill()
+    bus.left(90)
+    bus.forward(5)
+    bus.left(90)
+    bus.forward(35)
+    bus.left(90)
+    bus.forward(5)
+    bus.left(90)
+    bus.end_fill()
+
+# Draw bus function
+def draw_bus():
+    bus = turtle.Turtle(visible=False)
+
+    draw_bus_body(bus)
+    draw_wheel(bus)
+    draw_door(bus)
+    draw_windows(bus)
+    draw_driver_window(bus)
+
+    turtle.exitonclick()
+
+# Main driver code
+if __name__ == "__main__":
+    draw_bus()
