@@ -1,0 +1,44 @@
+import tkinter
+
+root = tkinter.Tk()
+root.title("Car")
+c = tkinter.Canvas(root, height=500, width=1200)
+c.grid(row=0, column=1)
+
+# rear-wheel
+c.create_oval(300, 300, 400, 400, fill="black")
+c.create_oval(320, 320, 380, 380, fill="grey")
+
+# front-wheel
+c.create_oval(600, 300, 700, 400, fill="black")
+c.create_oval(620, 320, 680, 380, fill="grey")
+
+# bottom lines
+c.create_line(400, 350, 600, 350, width=3)
+c.create_line(700, 350, 900, 350, width=3)
+c.create_line(50, 350, 300, 350, width=3)
+
+# rear
+c.create_line(100, 250, 50, 350, width=3)
+
+# front
+c.create_line(900, 250, 1000, 300, 900, 350, width=3, smooth="True")
+
+# top
+c.create_line(350, 150, 500, 100, 650, 150, width=3)
+
+# middleline
+c.create_line(100, 250, 900, 350, width=3)
+
+# horizontal_middle/rear/front lines
+c.create_line(500, 125, 500, 250, width=3)
+c.create_line(350, 150, 350, 250, width=3)
+c.create_line(650, 150, 650, 250, width=3)
+
+# rear
+c.create_line(100, 250, 200, 250, 350, 150, width=3, smooth="True")
+
+# windshield
+c.create_line(650, 150, 800, 250, 850, 250, width=3, smooth="True")
+
+root.mainloop()
