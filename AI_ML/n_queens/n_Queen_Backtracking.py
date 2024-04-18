@@ -1,4 +1,5 @@
-import heapq  # Import the heapq module for priority queue implementation
+import heapq
+import time
 
 # Define a heuristic function to estimate the cost of a state
 def heuristic(board):
@@ -30,25 +31,31 @@ def is_safe(board, row, col):
     return True
 
 # Solve the N Queens problem using backtracking
-def solve_n_queens(board, col):
+def solve_n_queens(board, col, steps):
     if col >= len(board):  # Base case: all queens are placed
         return True
     # Try placing a queen in each row of the current column
     for i in range(len(board)):
         if is_safe(board, i, col):
             board[i][col] = 1  # Place the queen
-            if solve_n_queens(board, col + 1):  # Recursively solve for the next column
+            steps[0] += 1  # Increment step count
+            if solve_n_queens(board, col + 1, steps):  # Recursively solve for the next column
                 return True
             board[i][col] = 0  # Backtrack if no solution found
     return False
 
-# Solve the 8 Queens problem
-def solve_8_queens():
-    board = [[0] * 8 for _ in range(8)]  # Create an 8x8 chessboard
-    if solve_n_queens(board, 0):  # Start solving from the first column
+# Solve the N Queens problem and measure time and steps
+def solve_n_queens_with_time(n):
+    start_time = time.time()  # Record start time
+    steps = [0]  # Initialize step count
+    board = [[0] * n for _ in range(n)]  # Create an NxN chessboard
+    if solve_n_queens(board, 0, steps):  # Start solving from the first column
+        elapsed_time = time.time() - start_time  # Calculate elapsed time
+        print("Solution found in {:.6f} seconds with {} steps:".format(elapsed_time, steps[0]))
         for row in board:  # Print the solution if found
             print(row)
     else:
         print("No solution found")  # Print if no solution found
 
-solve_8_queens()  # Call the function to solve the problem
+# Example usage: Solve the 8 Queens problem and measure time and steps
+solve_n_queens_with_time(8)
